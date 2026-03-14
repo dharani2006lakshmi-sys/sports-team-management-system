@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Register - Sports Team System</title>
+<title>Create Account</title>
 
 <style>
 
 body{
 font-family:Arial;
-background:linear-gradient(135deg,#1e3a8a,#2563eb);
+background:linear-gradient(135deg,#2563eb,#1e3a8a);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -15,36 +15,29 @@ height:100vh;
 margin:0;
 }
 
-.register-box{
+.box{
 background:white;
-padding:40px;
+padding:35px;
 width:380px;
 border-radius:10px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
-text-align:center;
-}
-
-h2{
-margin-bottom:20px;
-color:#1e3a8a;
 }
 
 input,select{
 width:100%;
-padding:12px;
-margin:10px 0;
+padding:10px;
+margin:8px 0;
 border:1px solid #ccc;
-border-radius:6px;
+border-radius:5px;
 }
 
 button{
 width:100%;
-padding:12px;
+padding:10px;
 background:#2563eb;
 color:white;
 border:none;
-border-radius:6px;
-font-size:16px;
+border-radius:5px;
 cursor:pointer;
 }
 
@@ -58,36 +51,48 @@ background:#1e40af;
 
 <body>
 
-<div class="register-box">
+<div class="box">
 
 <h2>Create Account</h2>
 
-<input type="text" placeholder="Full Name">
+<input id="name" placeholder="Player Name">
+<input id="age" placeholder="Age">
+<input id="position" placeholder="Position">
+<input id="team" placeholder="Team">
 
-<input type="text" placeholder="Username">
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
 
-<input type="password" placeholder="Password">
-
-<select>
-<option>Select Role</option>
-<option>Player</option>
-<option>Coach</option>
+<select id="role">
+<option value="">Select Role</option>
+<option value="player">Player</option>
+<option value="coach">Coach</option>
 </select>
 
 <button onclick="register()">Register</button>
-
-<p style="margin-top:10px">
-Already have account?
-<a href="login.html">Login</a>
-</p>
 
 </div>
 
 <script>
 
 function register(){
-alert("Account Created Successfully!");
+
+let user={
+name:document.getElementById("name").value,
+age:document.getElementById("age").value,
+position:document.getElementById("position").value,
+team:document.getElementById("team").value,
+username:document.getElementById("username").value,
+password:document.getElementById("password").value,
+role:document.getElementById("role").value
+};
+
+localStorage.setItem("user",JSON.stringify(user));
+
+alert("Account Created");
+
 window.location="login.html";
+
 }
 
 </script>
