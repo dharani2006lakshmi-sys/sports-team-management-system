@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sports Team Login</title>
+<title>Sports Team Performance Management System</title>
 
 <style>
 
@@ -20,6 +20,25 @@ align-items:center;
 background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
 }
 
+/* MAIN TITLE */
+
+.header{
+position:absolute;
+top:40px;
+text-align:center;
+color:white;
+}
+
+.header h1{
+font-size:34px;
+}
+
+.header p{
+margin-top:5px;
+font-size:14px;
+opacity:0.8;
+}
+
 /* LOGIN CARD */
 
 .login-container{
@@ -34,8 +53,8 @@ text-align:center;
 }
 
 .login-container h2{
-margin-bottom:25px;
-font-size:26px;
+margin-bottom:20px;
+font-size:24px;
 }
 
 /* INPUTS */
@@ -52,7 +71,7 @@ border-radius:6px;
 outline:none;
 }
 
-/* ROLE BUTTONS */
+/* ROLE SELECT */
 
 .role-select{
 display:flex;
@@ -100,9 +119,14 @@ background:#16a34a;
 
 <body>
 
+<div class="header">
+<h1>Sports Team Performance Management System</h1>
+<p>Track training, performance, and team statistics efficiently</p>
+</div>
+
 <div class="login-container">
 
-<h2>Sports Team Login</h2>
+<h2>Login</h2>
 
 <div class="input-box">
 <input type="text" placeholder="Username">
