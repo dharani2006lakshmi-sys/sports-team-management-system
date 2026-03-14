@@ -44,14 +44,14 @@ border-radius:6px;
 background:#2563eb;
 }
 
-/* Main */
+/* Main Area */
 
 .main{
 flex:1;
 padding:30px;
 }
 
-/* Top bar */
+/* Topbar */
 
 .topbar{
 display:flex;
@@ -61,17 +61,54 @@ margin-bottom:25px;
 
 /* Profile Card */
 
-.profile{
+.profile-card{
 background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-margin-bottom:25px;
-width:400px;
+width:420px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 6px 20px rgba(0,0,0,0.15);
+margin-bottom:30px;
+text-align:center;
 }
 
-.profile h3{
+.profile-img{
+width:80px;
+height:80px;
+border-radius:50%;
 margin-bottom:10px;
+}
+
+.position{
+background:#2563eb;
+color:white;
+display:inline-block;
+padding:4px 12px;
+border-radius:20px;
+font-size:13px;
+margin-bottom:10px;
+}
+
+.profile-details{
+text-align:left;
+margin-top:10px;
+}
+
+.profile-details p{
+margin:6px 0;
+}
+
+.edit-btn{
+margin-top:15px;
+padding:8px 15px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.edit-btn:hover{
+background:#1e40af;
 }
 
 /* Stats */
@@ -107,19 +144,15 @@ color:#2563eb;
 <h2>Player</h2>
 
 <a href="player-dashboard.html">Dashboard</a>
-
 <a href="training.html">Training Schedule</a>
-
 <a href="performance.html">Performance</a>
-
 <a href="injury.html">Injury Status</a>
-
 <a href="login.html">Logout</a>
 
 </div>
 
 
-<!-- Main Content -->
+<!-- Main -->
 
 <div class="main">
 
@@ -134,14 +167,23 @@ color:#2563eb;
 
 <!-- Player Profile -->
 
-<div class="profile">
+<div class="profile-card">
 
-<h3>Player Profile</h3>
+<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" class="profile-img">
 
-<p><b>Name:</b> <span id="pname"></span></p>
+<h2 id="pname">Player Name</h2>
+
+<p class="position" id="pposition">Position</p>
+
+<div class="profile-details">
+
 <p><b>Age:</b> <span id="page"></span></p>
-<p><b>Position:</b> <span id="pposition"></span></p>
+
 <p><b>Team:</b> <span id="pteam"></span></p>
+
+</div>
+
+<button class="edit-btn">Edit Profile</button>
 
 </div>
 
@@ -176,12 +218,15 @@ let user = JSON.parse(localStorage.getItem("user"));
 
 if(user){
 
-document.getElementById("welcome").innerText="Welcome "+user.name;
+document.getElementById("welcome").innerText = "Welcome " + user.name;
 
-document.getElementById("pname").innerText=user.name;
-document.getElementById("page").innerText=user.age;
-document.getElementById("pposition").innerText=user.position;
-document.getElementById("pteam").innerText=user.team;
+document.getElementById("pname").innerText = user.name;
+
+document.getElementById("page").innerText = user.age;
+
+document.getElementById("pposition").innerText = user.position;
+
+document.getElementById("pteam").innerText = user.team;
 
 }
 
