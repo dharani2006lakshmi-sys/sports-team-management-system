@@ -23,6 +23,11 @@ border-radius:10px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
 input,select{
 width:100%;
 padding:10px;
@@ -56,11 +61,15 @@ background:#1e40af;
 <h2>Create Account</h2>
 
 <input id="name" placeholder="Player Name">
+
 <input id="age" placeholder="Age">
+
 <input id="position" placeholder="Position">
+
 <input id="team" placeholder="Team">
 
 <input id="username" placeholder="Username">
+
 <input id="password" type="password" placeholder="Password">
 
 <select id="role">
@@ -89,9 +98,9 @@ role:document.getElementById("role").value
 
 localStorage.setItem("user",JSON.stringify(user));
 
-alert("Account Created Successfully");
+alert("Account Created Successfully!");
 
-window.location="login.html";
+window.location.href="login.html";
 
 }
 
