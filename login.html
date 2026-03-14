@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sports System Login</title>
+<title>Login - Sports System</title>
 
 <style>
 
@@ -15,49 +15,22 @@ font-family:Arial;
 body{
 height:100vh;
 display:flex;
-}
-
-.left{
-flex:1;
+justify-content:center;
+align-items:center;
 background:linear-gradient(135deg,#2563eb,#1e3a8a);
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:40px;
-}
-
-.left h1{
-font-size:40px;
-margin-bottom:20px;
-}
-
-.left p{
-width:70%;
-line-height:1.6;
-}
-
-.right{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#f4f6f9;
 }
 
 .login-box{
 background:white;
 padding:40px;
-width:350px;
-border-radius:10px;
+width:380px;
+border-radius:12px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
 }
 
-.login-box h2{
+h2{
 margin-bottom:20px;
-text-align:center;
 color:#1e3a8a;
 }
 
@@ -69,10 +42,29 @@ border:1px solid #ccc;
 border-radius:6px;
 }
 
-.role{
+.role-container{
 display:flex;
-justify-content:space-between;
-margin:15px 0;
+gap:15px;
+margin:20px 0;
+}
+
+.role{
+flex:1;
+padding:15px;
+border:2px solid #ddd;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.role:hover{
+border-color:#2563eb;
+background:#eef2ff;
+}
+
+.role.active{
+border-color:#2563eb;
+background:#eef2ff;
 }
 
 button{
@@ -96,52 +88,52 @@ background:#1e40af;
 
 <body>
 
-<div class="left">
-<h1>Sports Team System</h1>
-<p>
-Manage athlete performance, training schedules, and match statistics
-using a modern sports management platform.
-</p>
-</div>
-
-<div class="right">
-
 <div class="login-box">
 
-<h2>Login</h2>
+<h2>Sports Team Login</h2>
 
 <input type="text" placeholder="Username">
-
 <input type="password" placeholder="Password">
 
-<div class="role">
-<label>
-<input type="radio" name="role"> Player
-</label>
+<div class="role-container">
 
-<label>
-<input type="radio" name="role"> Coach
-</label>
+<div class="role" onclick="selectRole('player')" id="player">
+👤 Player
+</div>
+
+<div class="role" onclick="selectRole('coach')" id="coach">
+🏅 Coach
+</div>
+
 </div>
 
 <button onclick="login()">Login</button>
 
 </div>
 
-</div>
-
 <script>
+
+let selectedRole="";
+
+function selectRole(role){
+
+selectedRole=role;
+
+document.getElementById("player").classList.remove("active");
+document.getElementById("coach").classList.remove("active");
+
+document.getElementById(role).classList.add("active");
+
+}
 
 function login(){
 
-let role=document.querySelector('input[name="role"]:checked');
-
-if(!role){
-alert("Select Player or Coach");
+if(selectedRole==""){
+alert("Please select a role");
 return;
 }
 
-if(role.parentElement.textContent.includes("Player")){
+if(selectedRole=="player"){
 window.location="player-dashboard.html";
 }
 else{
