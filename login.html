@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login - Sports System</title>
+<title>Sports Team Login</title>
 
 <style>
 
@@ -17,69 +17,81 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#2563eb,#1e3a8a);
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
 }
 
-.login-box{
-background:white;
+/* LOGIN CARD */
+
+.login-container{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
 padding:40px;
 width:380px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+color:white;
 text-align:center;
 }
 
-h2{
-margin-bottom:20px;
-color:#1e3a8a;
+.login-container h2{
+margin-bottom:25px;
+font-size:26px;
+}
+
+/* INPUTS */
+
+.input-box{
+margin:15px 0;
 }
 
 input{
 width:100%;
 padding:12px;
-margin:10px 0;
-border:1px solid #ccc;
+border:none;
 border-radius:6px;
+outline:none;
 }
 
-.role-container{
+/* ROLE BUTTONS */
+
+.role-select{
 display:flex;
-gap:15px;
+gap:10px;
 margin:20px 0;
 }
 
 .role{
 flex:1;
-padding:15px;
-border:2px solid #ddd;
+padding:12px;
+background:rgba(255,255,255,0.2);
 border-radius:8px;
 cursor:pointer;
 transition:0.3s;
 }
 
 .role:hover{
-border-color:#2563eb;
-background:#eef2ff;
+background:#2563eb;
 }
 
-.role.active{
-border-color:#2563eb;
-background:#eef2ff;
+.active{
+background:#2563eb;
 }
 
-button{
+/* LOGIN BUTTON */
+
+.login-btn{
 width:100%;
 padding:12px;
-background:#2563eb;
-color:white;
 border:none;
-border-radius:6px;
+border-radius:8px;
+background:#22c55e;
+color:white;
 font-size:16px;
 cursor:pointer;
 }
 
-button:hover{
-background:#1e40af;
+.login-btn:hover{
+background:#16a34a;
 }
 
 </style>
@@ -88,52 +100,57 @@ background:#1e40af;
 
 <body>
 
-<div class="login-box">
+<div class="login-container">
 
 <h2>Sports Team Login</h2>
 
+<div class="input-box">
 <input type="text" placeholder="Username">
+</div>
+
+<div class="input-box">
 <input type="password" placeholder="Password">
-
-<div class="role-container">
-
-<div class="role" onclick="selectRole('player')" id="player">
-👤 Player
 </div>
 
-<div class="role" onclick="selectRole('coach')" id="coach">
-🏅 Coach
+<div class="role-select">
+
+<div class="role" id="player" onclick="selectRole('player')">
+⚽ Player
+</div>
+
+<div class="role" id="coach" onclick="selectRole('coach')">
+🏆 Coach
 </div>
 
 </div>
 
-<button onclick="login()">Login</button>
+<button class="login-btn" onclick="login()">Login</button>
 
 </div>
 
 <script>
 
-let selectedRole="";
+let role="";
 
-function selectRole(role){
+function selectRole(r){
 
-selectedRole=role;
+role=r;
 
 document.getElementById("player").classList.remove("active");
 document.getElementById("coach").classList.remove("active");
 
-document.getElementById(role).classList.add("active");
+document.getElementById(r).classList.add("active");
 
 }
 
 function login(){
 
-if(selectedRole==""){
-alert("Please select a role");
+if(role==""){
+alert("Select Player or Coach");
 return;
 }
 
-if(selectedRole=="player"){
+if(role=="player"){
 window.location="player-dashboard.html";
 }
 else{
