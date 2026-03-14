@@ -18,25 +18,25 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+color:white;
 }
 
-/* MAIN TITLE */
+/* SYSTEM TITLE */
 
 .header{
 position:absolute;
 top:40px;
 text-align:center;
-color:white;
 }
 
 .header h1{
-font-size:34px;
+font-size:32px;
 }
 
 .header p{
-margin-top:5px;
 font-size:14px;
 opacity:0.8;
+margin-top:5px;
 }
 
 /* LOGIN CARD */
@@ -48,13 +48,7 @@ padding:40px;
 width:380px;
 border-radius:15px;
 box-shadow:0 10px 30px rgba(0,0,0,0.4);
-color:white;
 text-align:center;
-}
-
-.login-container h2{
-margin-bottom:20px;
-font-size:24px;
 }
 
 /* INPUTS */
@@ -113,6 +107,16 @@ cursor:pointer;
 background:#16a34a;
 }
 
+.register{
+margin-top:15px;
+font-size:14px;
+}
+
+.register a{
+color:#22c55e;
+text-decoration:none;
+}
+
 </style>
 
 </head>
@@ -126,14 +130,12 @@ background:#16a34a;
 
 <div class="login-container">
 
-<h2>Login</h2>
-
 <div class="input-box">
-<input type="text" placeholder="Username">
+<input id="username" type="text" placeholder="Username">
 </div>
 
 <div class="input-box">
-<input type="password" placeholder="Password">
+<input id="password" type="password" placeholder="Password">
 </div>
 
 <div class="role-select">
@@ -149,6 +151,10 @@ background:#16a34a;
 </div>
 
 <button class="login-btn" onclick="login()">Login</button>
+
+<div class="register">
+New user? <a href="register.html">Create Account</a>
+</div>
 
 </div>
 
@@ -169,16 +175,24 @@ document.getElementById(r).classList.add("active");
 
 function login(){
 
+let username=document.getElementById("username").value;
+let password=document.getElementById("password").value;
+
 if(role==""){
-alert("Select Player or Coach");
+alert("Please select Player or Coach");
 return;
 }
 
-if(role=="player"){
+/* Demo Login */
+
+if(role=="player" && username=="player" && password=="1234"){
 window.location="player-dashboard.html";
 }
-else{
+else if(role=="coach" && username=="coach" && password=="1234"){
 window.location="coach-dashboard.html";
+}
+else{
+alert("Invalid Username or Password");
 }
 
 }
