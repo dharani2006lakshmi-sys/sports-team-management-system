@@ -1,120 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sports Team Performance Management System</title>
+<title>Login</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
 body{
-height:100vh;
+font-family:Arial;
+background:#f4f6f9;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
-color:white;
+height:100vh;
 }
 
-/* SYSTEM TITLE */
-
-.header{
-position:absolute;
-top:40px;
-text-align:center;
-}
-
-.header h1{
-font-size:32px;
-}
-
-.header p{
-font-size:14px;
-opacity:0.8;
-margin-top:5px;
-}
-
-/* LOGIN CARD */
-
-.login-container{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(12px);
-padding:40px;
-width:380px;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-text-align:center;
-}
-
-/* INPUTS */
-
-.input-box{
-margin:15px 0;
+.box{
+background:white;
+padding:30px;
+width:350px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 input{
 width:100%;
-padding:12px;
-border:none;
-border-radius:6px;
-outline:none;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
 }
 
-/* ROLE SELECT */
-
-.role-select{
-display:flex;
-gap:10px;
-margin:20px 0;
-}
-
-.role{
-flex:1;
-padding:12px;
-background:rgba(255,255,255,0.2);
-border-radius:8px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.role:hover{
-background:#2563eb;
-}
-
-.active{
-background:#2563eb;
-}
-
-/* LOGIN BUTTON */
-
-.login-btn{
+button{
 width:100%;
-padding:12px;
-border:none;
-border-radius:8px;
-background:#22c55e;
+padding:10px;
+background:#2563eb;
 color:white;
-font-size:16px;
+border:none;
+border-radius:5px;
 cursor:pointer;
 }
 
-.login-btn:hover{
-background:#16a34a;
-}
-
-.register{
-margin-top:15px;
-font-size:14px;
-}
-
-.register a{
-color:#22c55e;
-text-decoration:none;
+button:hover{
+background:#1e40af;
 }
 
 </style>
@@ -123,73 +50,38 @@ text-decoration:none;
 
 <body>
 
-<div class="header">
-<h1>Sports Team Performance Management System</h1>
-<p>Track training, performance, and team statistics efficiently</p>
-</div>
+<div class="box">
 
-<div class="login-container">
+<h2>Login</h2>
 
-<div class="input-box">
-<input id="username" type="text" placeholder="Username">
-</div>
+<input id="username" placeholder="Username">
 
-<div class="input-box">
 <input id="password" type="password" placeholder="Password">
-</div>
 
-<div class="role-select">
+<button onclick="login()">Login</button>
 
-<div class="role" id="player" onclick="selectRole('player')">
-⚽ Player
-</div>
-
-<div class="role" id="coach" onclick="selectRole('coach')">
-🏆 Coach
-</div>
-
-</div>
-
-<button class="login-btn" onclick="login()">Login</button>
-
-<div class="register">
-New user? <a href="register.html">Create Account</a>
-</div>
+<p>New user? <a href="register.html">Create Account</a></p>
 
 </div>
 
 <script>
 
-let role="";
-
-function selectRole(r){
-
-role=r;
-
-document.getElementById("player").classList.remove("active");
-document.getElementById("coach").classList.remove("active");
-
-document.getElementById(r).classList.add("active");
-
-}
-
 function login(){
 
-let username=document.getElementById("username").value;
-let password=document.getElementById("password").value;
+let storedUser = JSON.parse(localStorage.getItem("user"));
 
-if(role==""){
-alert("Please select Player or Coach");
-return;
-}
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
 
-/* Demo Login */
+if(storedUser && username == storedUser.username && password == storedUser.password){
 
-if(role=="player" && username=="player" && password=="1234"){
+if(storedUser.role == "player"){
 window.location="player-dashboard.html";
 }
-else if(role=="coach" && username=="coach" && password=="1234"){
+else{
 window.location="coach-dashboard.html";
+}
+
 }
 else{
 alert("Invalid Username or Password");
