@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Player Performance</title>
+<title>Player Dashboard</title>
 
 <style>
 
@@ -12,70 +12,112 @@ box-sizing:border-box;
 font-family:Arial;
 }
 
+/* LAYOUT */
+
 body{
+display:flex;
+height:100vh;
 background:#f4f6f9;
 }
 
-/* HEADER */
+/* SIDEBAR */
 
-.header{
-background:#2563eb;
+.sidebar{
+width:220px;
+background:#1e3a8a;
 color:white;
 padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
 }
 
-.back-btn{
-background:white;
-color:#2563eb;
-border:none;
-padding:8px 15px;
-border-radius:5px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.back-btn:hover{
-background:#e5e7eb;
-}
-
-/* CONTENT */
-
-.container{
-padding:40px;
-}
-
-h2{
-text-align:center;
+.sidebar h2{
 margin-bottom:30px;
 }
 
-/* TABLE */
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+margin:15px 0;
+padding:10px;
+border-radius:6px;
+}
 
-table{
-width:80%;
-margin:auto;
-border-collapse:collapse;
+.sidebar a:hover{
+background:#2563eb;
+}
+
+/* MAIN CONTENT */
+
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+/* TOP BAR */
+
+.topbar{
 background:white;
+padding:15px 25px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+display:flex;
+justify-content:space-between;
+}
+
+/* DASHBOARD CARDS */
+
+.cards{
+display:flex;
+gap:20px;
+padding:30px;
+}
+
+.card{
+background:white;
+flex:1;
+padding:25px;
+border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-th{
-background:#f97316;
+.card h3{
+margin-bottom:10px;
+}
+
+.card button{
+margin-top:10px;
+padding:8px 15px;
+background:#2563eb;
 color:white;
-padding:15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
 }
 
-td{
-padding:15px;
+.card button:hover{
+background:#1e40af;
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+gap:20px;
+padding:0 30px 30px 30px;
+}
+
+.stat{
+background:white;
+flex:1;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 text-align:center;
-border-bottom:1px solid #ddd;
 }
 
-tr:hover{
-background:#f9fafb;
+.stat h2{
+color:#2563eb;
+margin-top:10px;
 }
 
 </style>
@@ -84,51 +126,71 @@ background:#f9fafb;
 
 <body>
 
-<div class="header">
+<div class="sidebar">
 
-<button class="back-btn" onclick="location.href='player-dashboard.html'">
-⬅ Back
-</button>
+<h2>Player</h2>
 
-<h3>Player Performance</h3>
+<a href="#">Dashboard</a>
+<a href="training.html">Training Schedule</a>
+<a href="performance.html">Performance</a>
+<a href="injury.html">Injury Status</a>
+<a href="login.html">Logout</a>
 
 </div>
 
-<div class="container">
 
-<h2>Performance Statistics</h2>
+<div class="main">
 
-<table>
+<div class="topbar">
 
-<tr>
-<th>Player</th>
-<th>Goals</th>
-<th>Assists</th>
-<th>Rating</th>
-</tr>
+<h3>Player Dashboard</h3>
 
-<tr>
-<td>Player 1</td>
-<td>2</td>
-<td>1</td>
-<td>8.5</td>
-</tr>
+<p>Welcome Player</p>
 
-<tr>
-<td>Player 2</td>
-<td>1</td>
-<td>0</td>
-<td>7.2</td>
-</tr>
+</div>
 
-<tr>
-<td>Player 3</td>
-<td>3</td>
-<td>2</td>
-<td>9.0</td>
-</tr>
 
-</table>
+<div class="cards">
+
+<div class="card">
+<h3>Training Schedule</h3>
+<p>View upcoming training sessions.</p>
+<button onclick="location.href='training.html'">View</button>
+</div>
+
+<div class="card">
+<h3>Performance</h3>
+<p>Check your match performance statistics.</p>
+<button onclick="location.href='performance.html'">View</button>
+</div>
+
+<div class="card">
+<h3>Injury Report</h3>
+<p>Track injury status and recovery.</p>
+<button onclick="location.href='injury.html'">View</button>
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<h4>Total Matches</h4>
+<h2>12</h2>
+</div>
+
+<div class="stat">
+<h4>Total Goals</h4>
+<h2>8</h2>
+</div>
+
+<div class="stat">
+<h4>Fitness Score</h4>
+<h2>92%</h2>
+</div>
+
+</div>
 
 </div>
 
